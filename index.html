@@ -55,14 +55,57 @@
                                 </div>
                             </div>
 
-                            <!-- Real Civist Petition Widget -->
+                            <!-- Civist Petition Widget with Enhanced Fallback -->
                             <div class="civist-petition-widget">
-                                <iframe src="https://widget.civist.cloud/?api_url=https%3A%2F%2Fapi.civist.cloud%2Ft%2Fc2520e7b-3ab6-44c8-baec-69cf9574a9d4%2F&permalink=https%3A%2F%2Ffreie-rede-jetzt.de%2F&referrer=https%3A%2F%2Ffreie-rede-jetzt.de%2F&mode=default"
+                                <iframe id="petition-iframe"
+                                        src="https://widget.civist.cloud/?api_url=https%3A%2F%2Fapi.civist.cloud%2Ft%2Fc2520e7b-3ab6-44c8-baec-69cf9574a9d4%2F&permalink=https%3A%2F%2Ffreie-rede-jetzt.de%2F&referrer=https%3A%2F%2Ffreie-rede-jetzt.de%2F&mode=default#/RW1iZWRkaW5nOjFiY2VmNjhmLTdjZTItNDBjMC1iNDVhLWZmNTgxNDEwMTQ3ZA=="
                                         width="100%" 
                                         height="400" 
                                         frameborder="0"
-                                        title="Petition Form">
+                                        title="Petition Form"
+                                        onload="console.log('Petition widget loaded - checking content...')">
                                 </iframe>
+                                
+                                <!-- Fallback form appears only if Civist widget fails -->
+                                <div id="fallback-form" style="display: none;">
+                                    <div class="petition-form">
+                                        <div class="form-header">
+                                            <h1>Wir, die Unterzeichner, fordern:</h1>
+                                            <h2>Freie Rede im Netz durch das Grundgesetz schützen und Hassrede-Gesetze abschaffen! (§86a, §130, §188 StGB)</h2>
+                                        </div>
+                                        
+                                        <form action="https://formspree.io/f/mjkvpokg" method="POST">
+                                            <div class="form-content">
+                                                <div style="display: flex; gap: 8px; margin-bottom: 14px;">
+                                                    <div class="form-field" style="flex: 1;">
+                                                        <input type="text" name="firstName" placeholder="Vorname" required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
+                                                    </div>
+                                                    <div class="form-field" style="flex: 1;">
+                                                        <input type="text" name="lastName" placeholder="Nachname" required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="form-field">
+                                                    <input type="email" name="email" placeholder="E-Mail-Adresse" required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px; margin-bottom: 14px;">
+                                                </div>
+                                                
+                                                <!-- Hidden field to identify this petition -->
+                                                <input type="hidden" name="_subject" value="Neue Petition Unterschrift - Freie Rede Jetzt">
+                                            </div>
+                                            
+                                            <div class="form-submit">
+                                                <button type="submit" class="submit-button" style="background: rgb(0, 110, 94); color: white; padding: 12px 24px; border: none; border-radius: 4px; cursor: pointer; font-size: 16px;">
+                                                    Petition unterzeichnen
+                                                </button>
+                                            </div>
+                                        </form>
+                                        
+                                        <div style="background: #e7f3ff; border: 1px solid #b3d9ff; color: #0056b3; padding: 12px; margin-top: 15px; border-radius: 4px; font-size: 14px; text-align: center;">
+                                            <strong>Hinweis:</strong> Das ursprüngliche Petition-Widget ist nicht mehr verfügbar. 
+                                            Ihre Unterschrift wird über dieses sichere Formular erfasst und weitergeleitet.
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -72,14 +115,25 @@
                     <div class="column column-left">
                         <h2>Unterstützen Sie den Kampf für freie Rede im Netz!</h2>
                         
-                        <!-- Real Civist Support Widget -->
+                        <!-- Civist Support Widget -->
                         <div class="civist-support-widget">
-                            <iframe src="https://widget.civist.cloud/?api_url=https%3A%2F%2Fapi.civist.cloud%2Ft%2Fc2520e7b-3ab6-44c8-baec-69cf9574a9d4%2F&permalink=https%3A%2F%2Ffreie-rede-jetzt.de%2F&referrer=https%3A%2F%2Ffreie-rede-jetzt.de%2F&mode=default"
+                            <iframe id="support-iframe"
+                                    src="https://widget.civist.cloud/?api_url=https%3A%2F%2Fapi.civist.cloud%2Ft%2Fc2520e7b-3ab6-44c8-baec-69cf9574a9d4%2F&permalink=https%3A%2F%2Ffreie-rede-jetzt.de%2F&referrer=https%3A%2F%2Ffreie-rede-jetzt.de%2F&mode=default#/RW1iZWRkaW5nOjhkZDI5MGZhLTg1ZjEtNDAyMy1iYjAwLTAyYzU0NzdiYzgwMA=="
                                     width="100%" 
                                     height="300" 
                                     frameborder="0"
-                                    title="Support Widget">
+                                    title="Support Widget"
+                                    onload="console.log('Support widget loaded')">
                             </iframe>
+                            
+                            <!-- Fallback support info -->
+                            <div id="support-fallback" style="display: none; background: rgb(246, 245, 238); padding: 20px; border-radius: 8px; border-left: 4px solid rgb(0, 110, 94); text-align: center;">
+                                <p style="margin: 0; font-size: 16px; color: rgb(70, 73, 88);">
+                                    <strong>Unterstützung erwünscht:</strong><br>
+                                    Helfen Sie dabei, diese wichtige Petition zu verbreiten! 
+                                    Teilen Sie den Link mit Freunden und Familie.
+                                </p>
+                            </div>
                         </div>
                     </div>
 
